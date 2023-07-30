@@ -3,13 +3,17 @@ class StartupsController < ApplicationController
   API_KEY = "2a28d17c7d25458a32690f9869580391"
 
   def index
-    company_data = fetch_multiple_startups
+    @startups = fetch_multiple_startups
   end
+
+
+
+
+
 
   private
 
   def fetch_multiple_startups
-
     require 'httparty'
 
     company_names = ['airbnb', 'uber', 'facebook', 'tiktok', 'twitter']
@@ -17,25 +21,14 @@ class StartupsController < ApplicationController
     data = []
 
     company_names.each do |name|
-
       response = HTTParty.get("https://api.crunchbase.com/api/v4/entities/organizations/#{name}",
         query: {
           user_key: API_KEY
         }
       )
-
       result = JSON.parse(response.body)
       data << result
-
     end
-
-    # names = []
-    # images = []
-
-    # data.each do |company|
-    #   names << company["properties"]["identifier"]["value"]
-    #   images << company["properties"]["identifier"]["image_id"]
-    # end
 
     companies = []
 
@@ -45,11 +38,6 @@ class StartupsController < ApplicationController
         logo: company["properties"]["identifier"]["image_id"]
       }
     end
-    raise
     return companies
-
   end
-
-  # return companies
-
 end

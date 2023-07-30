@@ -1,1 +1,6 @@
 <h1> Aristotle </h1>
+
+<% @startups.each do |startup| %>
+  <img src="<%= "https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/#{startup[:logo]}" %>">
+  <h2><%= startup[:name] %></h2>
+<% end %>
