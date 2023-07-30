@@ -3,7 +3,7 @@ class StartupsController < ApplicationController
   API_KEY = "2a28d17c7d25458a32690f9869580391"
 
   def index
-    company_data = fetch_multiple_startups
+    @startups = fetch_multiple_startups
   end
 
   private
@@ -45,7 +45,7 @@ class StartupsController < ApplicationController
         logo: company["properties"]["identifier"]["image_id"]
       }
     end
-    raise
+
     return companies
 
   end

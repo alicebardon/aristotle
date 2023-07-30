@@ -1,1 +1,6 @@
 <h1> Aristotle </h1>
+
+<% @startups.each do |startup| %>
+  <h2><%= startup[:name] %></h2>
+  <img src="<%= startup[:logo] %>">
+<% end %>
