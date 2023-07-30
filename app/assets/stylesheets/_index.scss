@@ -1,0 +1,60 @@
+.container {
+  // display: flex;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.sidebar {
+  background: rgb(7, 27, 80);
+  width: 200px;
+}
+
+.list_startups {
+  max-width: 800px;
+  // margin: 30px 248px;
+  text-align: center;
+  margin-left: 5px;
+}
+
+h1 {
+  font-size: 30px;
+  color: rgb(7, 27, 80);
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+h2 {
+  color: rgb(0, 22, 223);
+  font-size: 15px;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+a {
+  border-radius: 6px;
+  background-color: rgb(7, 27, 80);
+  padding: 10px;
+  color: white;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  text-decoration: none;
+}
+img {
+  height: 25px;
+  margin: 5px;
+  border-radius: 4px;
+}
+
+.startup {
+  display: flex;
+  align-items: center;
+  background-color: rgba(245, 245, 245, 0.8);
+  border:rgb(7, 27, 80) solid 1px;
+}
+
+.logo {
+  margin-right: 20px;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}

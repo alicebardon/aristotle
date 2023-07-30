@@ -1,12 +1,17 @@
 <div class="container">
-  <h1> Aristotle </h1>
-  <%= link_to "Download Logos", download_logos_path %>
+  <div class="sidebar">
+  </div>
+  <div class="list_startups">
+    <div class="title">
+      <h1> Aristotle </h1>
+      <%= link_to "Download Logos", download_logos_path %>
+    </div>
 
-  <br>
-  <br>
-
-  <% @startups.each do |startup| %>
-    <img src="<%= "https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/#{startup[:logo]}" %>">
-    <h2><%= startup[:name] %></h2>
-  <% end %>
+    <% @startups.each do |startup| %>
+      <div class="startup">
+        <img src="<%= "https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/#{startup[:logo]}" %>" class="logo">
+        <h2><%= startup[:name] %></h2>
+      </div>
+    <% end %>
+  </div>
 </div>
