@@ -1,4 +1,8 @@
 <h1> Aristotle </h1>
+<%= link_to "Download Logos", download_logos_path %>
+
+<br>
+<br>
 
 <% @startups.each do |startup| %>
   <img src="<%= "https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/#{startup[:logo]}" %>">

@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   # get 'index', to: 'pages#index'
   get 'startups', to: 'startups#index'
+  get "download_logos", to: "startups#download_logos"
 end
