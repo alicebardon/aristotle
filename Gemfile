@@ -12,9 +12,10 @@ gem "sprockets-rails"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
 
-# Adding crunchbase gem
-# gem 'crunchbase4', '~> 0.2.2'
-# gem 'crunchbase'
+# Install gem for zipfile
+gem 'zip'
+gem 'open-uri'
+gem 'rubyzip'
 
 # Adding httparty gem
 gem "httparty"
