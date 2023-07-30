@@ -18,4 +18,7 @@ company_names.each do |name|
 
   puts data["properties"]["identifier"]["value"]
   puts data["properties"]["identifier"]["image_id"]
+
+  image = data["properties"]["identifier"]["image_id"]
+  puts "https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/#{image}"
 end
