@@ -40,7 +40,8 @@ class StartupsController < ApplicationController
   def fetch_multiple_startups
     require 'httparty'
 
-    company_names = %w[airbnb uber facebook tiktok twitter]
+    company_names = %w[vivenu workmotion celonis deliverr stripe slack
+      zoom datadog airbnb uber facebook tiktok twitter bolt pigment]
 
     data = []
 
