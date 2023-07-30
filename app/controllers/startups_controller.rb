@@ -11,9 +11,6 @@ class StartupsController < ApplicationController
   end
 
   def download_logos
-    # Replace the URL with the actual Crunchbase logo URL you want to download
-    # logo_url = 'https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/pgylhyxgfqueumssu8lq'
-
     @startups = fetch_multiple_startups
 
     # Create the folder "Aristotle_logos" if it doesn't exist
@@ -33,13 +30,8 @@ class StartupsController < ApplicationController
 
       # Download the image from the URL and save it to the destination file
       download_image(actual_image_url, image_filename)
-
-      # Create a zip file and add the downloaded image to it
-      # create_zip_file(image_filename, zip_filename)
     end
   end
-
-
 
   ###### PRIVATE METHODS ######
 
@@ -48,15 +40,13 @@ class StartupsController < ApplicationController
   def fetch_multiple_startups
     require 'httparty'
 
-    company_names = ['airbnb', 'uber', 'facebook', 'tiktok', 'twitter']
+    company_names = %w[airbnb uber facebook tiktok twitter]
 
     data = []
 
     company_names.each do |name|
       response = HTTParty.get("https://api.crunchbase.com/api/v4/entities/organizations/#{name}",
-        query: {
-          user_key: API_KEY
-        }
+        query: { user_key: API_KEY }
       )
       result = JSON.parse(response.body)
       data << result
@@ -82,14 +72,4 @@ class StartupsController < ApplicationController
     # Save the image data to the destination file
     File.open(destination, 'wb') { |file| file.write(image_data) }
   end
-
-  # def create_zip_file(source_file, zip_file_name)
-  #   # Create a new zip file
-  #   Zip::ZipOutputStream.open(zip_file_name) do |zipfile|
-  #     # Add the image file to the zip file
-  #     zipfile.put_next_entry(File.basename(source_file))
-  #     File.open(source_file, 'rb') { |file| zipfile.write(file.read) }
-  #   end
-  # end
-
 end

@@ -1,4 +1,4 @@
-puts "Hey girl!"
+puts "Hey crunchbase test!"
 
 require 'httparty'
 
