@@ -11,24 +11,44 @@ class StartupsController < ApplicationController
 
   def download_logos
     # Replace the URL with the actual Crunchbase logo URL you want to download
-    logo_url = 'https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/pgylhyxgfqueumssu8lq'
+    # logo_url = 'https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/pgylhyxgfqueumssu8lq'
 
-    # Specify the destination filename for the downloaded image
-    image_filename = 'logo.jpg'
+    @startups = fetch_multiple_startups
 
-    # Specify the filename for the zip file
-    zip_filename = 'logo.zip'
+    @startups.each do |startup|
+      logo_url = "https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/#{startup[:logo]}"
+      # Specify the destination filename for the downloaded image
+      image_filename = "#{startup[:name]}.jpg"
 
-    # Use URI.parse to get the actual image URL (follow redirects if any)
-    actual_image_url = URI.parse(logo_url).to_s
+      # Specify the filename for the zip file
+      zip_filename = "#{startup[:name]}.zip"
 
-    # Download the image from the URL and save it to the destination file
-    download_image(actual_image_url, image_filename)
+      # Use URI.parse to get the actual image URL (follow redirects if any)
+      actual_image_url = URI.parse(logo_url).to_s
 
-    # Create a zip file and add the downloaded image to it
-    create_zip_file(image_filename, zip_filename)
+      # Download the image from the URL and save it to the destination file
+      download_image(actual_image_url, image_filename)
 
-    puts "Logo downloaded and saved to #{zip_filename}"
+      # Create a zip file and add the downloaded image to it
+      create_zip_file(image_filename, zip_filename)
+    end
+
+    # # Specify the destination filename for the downloaded image
+    # image_filename = 'logo.jpg'
+
+    # # Specify the filename for the zip file
+    # zip_filename = 'logo.zip'
+
+    # # Use URI.parse to get the actual image URL (follow redirects if any)
+    # actual_image_url = URI.parse(logo_url).to_s
+
+    # # Download the image from the URL and save it to the destination file
+    # download_image(actual_image_url, image_filename)
+
+    # # Create a zip file and add the downloaded image to it
+    # create_zip_file(image_filename, zip_filename)
+
+    # puts "Logo downloaded and saved to #{zip_filename}"
 
   end
 
