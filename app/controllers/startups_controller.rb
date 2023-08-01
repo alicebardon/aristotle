@@ -4,7 +4,7 @@ class StartupsController < ApplicationController
   require 'zip'
   require 'fileutils'
 
-  API_KEY = "2a28d17c7d25458a32690f9869580391"
+  API_KEY = " "
 
   def index
     @startups = fetch_multiple_startups
@@ -21,9 +21,6 @@ class StartupsController < ApplicationController
       logo_url = "https://images.crunchbase.com/image/upload/c_lpad,f_auto,q_auto:eco,dpr_1/#{startup[:logo]}"
       # Specify the destination filename for the downloaded image
       image_filename = File.join(folder_name, "#{startup[:name]}.jpg")
-
-      # Specify the filename for the zip file
-      # zip_filename = "#{startup[:name]}.zip"
 
       # Use URI.parse to get the actual image URL (follow redirects if any)
       actual_image_url = URI.parse(logo_url).to_s
